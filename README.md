@@ -6,6 +6,7 @@ Tracked issues / ideas:
     - This will likely be obsolete when mod profiles are added to the mod manager.
   - Refactor the existing save system to support more item variants and extra features.
     - Backup saves are planned.
+  - Update modifier tables to be relevant to the item, e.g. ranged gloves will roll ranged accuracy, ranged max hit, etc.
   - Explore the idea of having drops appear as unidentified versions rather than pre-rolled versions to alleviate storage issues and reduce clutter in the drop information.
   - Explore options for obtaining a steady supply of vanilla weapons or converting special weapons into vanilla weapon crafting ingredients.
   - Resolve the issue with T120 armor and weapons requiring completion of the Impending Darkness event to equip, even after completing it multiple times.
