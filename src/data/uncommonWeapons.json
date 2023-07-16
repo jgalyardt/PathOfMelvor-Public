@@ -1,0 +1,649 @@
+{
+  "$schema": "https://melvoridle.com/assets/schema/gameData.json",
+  "namespace": "pathOfMelvor",
+  "data": {
+    "attacks": [
+      {
+        "id": "weapon_uncommon_0",
+        "name": "Lesser Poison",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Poison",
+            "procs": 30,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 20
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage and inflicts Poison that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_uncommon_1",
+        "name": "Lesser Bleed",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Bleed",
+            "procs": 5,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 75
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage and inflicts Bleed that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_uncommon_2",
+        "name": "Lesser Stun",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 1,
+            "chance": 100,
+            "flavour": "Stun"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage and applies stun for ${onHitEffect0turns} turn.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_uncommon_3",
+        "name": "Lesser Ignite",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Burn",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage and inflicts Burn that deals ${onHitEffect0DamageMaxValue0}% of the enemy's current hitpoints as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_uncommon_4",
+        "name": "Lesser Sleep",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Sleep",
+            "turns": 1,
+            "chance": 100,
+            "hitpointThreshold": 40
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage and applies sleep for ${onHitEffect0turns} turn if the enemy's hitpoints are below ${onHitEffect0hpThreshold}%.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_uncommon_5",
+        "name": "Lesser Slow",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Slow",
+            "magnitude": 20,
+            "turns": 1
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage and gives the enemy +${onHitEffect0modValue0}% Attack Interval for ${onHitEffect0turns} of the enemy's turns.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_uncommon_6",
+        "name": "Double Strike",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 75
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 2,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform two quick attacks that deal ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Perform two quick attacks that deal <damage>."
+      },
+      {
+        "id": "weapon_uncommon_7",
+        "name": "Triple Strike",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 55
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 3,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform two quick attacks that deal ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Perform two quick attacks that deal <damage>."
+      },
+      {
+        "id": "weapon_uncommon_8",
+        "name": "Dual Strike",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 80
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 2,
+        "attackInterval": 100,
+        "lifesteal": 0,
+        "description": "Perform two quick strikes, each dealing ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Perform two quick strikes, each dealing <damage>."
+      },
+      {
+        "id": "weapon_uncommon_9",
+        "name": "Powerful Cleave",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 150
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 100,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Unleash a powerful cleave that deals <damage>."
+      },
+      {
+        "id": "weapon_uncommon_10",
+        "name": "Whirling Strikes",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 90
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 3,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage three times.",
+        "descriptionGenerator": "Execute a series of whirling strikes, dealing <damage> three times."
+      },
+      {
+        "id": "weapon_uncommon_11",
+        "name": "Mighty Slam",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 130
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Unavoidable slam that deals ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Deliver a mighty slam, dealing <damage>."
+      },
+      {
+        "id": "weapon_uncommon_12",
+        "name": "Dual Thrust",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 80
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 2,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Thrust your weapon twice, each dealing ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Thrust your weapon twice, each dealing <damage>."
+      },
+      {
+        "id": "weapon_uncommon_13",
+        "name": "Heavy Assault",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 155
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 1,
+            "chance": 50,
+            "flavour": "Stun"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 200,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage with a 50% chance to stun for 1 turn.",
+        "descriptionGenerator": "Launch a heavy assault, dealing <damage>."
+      },
+      {
+        "id": "weapon_uncommon_14",
+        "name": "Dual Slash",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 70
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 2,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Perform two slashing strikes, each dealing ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Perform two slashing strikes, each dealing <damage>."
+      },
+      {
+        "id": "weapon_uncommon_15",
+        "name": "Rapid Strikes",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 67
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 3,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Unleash a flurry of rapid strikes, dealing ${attackDamageMaxValue0}% of your normal damage three times.",
+        "descriptionGenerator": "Unleash a flurry of rapid strikes, dealing <damage> three times."
+      },
+      {
+        "id": "weapon_uncommon_16",
+        "name": "Dual Cleave",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 85
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 2,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Cleave twice, each dealing ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Perform two powerful cleaves, each dealing <damage>."
+      },
+      {
+        "id": "weapon_uncommon_17",
+        "name": "Dancing Blades",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 50
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 4,
+        "attackInterval": 200,
+        "lifesteal": 0,
+        "description": "Strike the enemy four times for ${attackDamageMaxValue0}% of your normal damage each time.",
+        "descriptionGenerator": "Dance with your blades, striking the enemy four times for <damage> each time."
+      },
+      {
+        "id": "weapon_uncommon_18",
+        "name": "Whirlwind Assault",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 67
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 3,
+        "attackInterval": 200,
+        "lifesteal": 0,
+        "description": "Execute a whirlwind assault, striking the enemy three times for ${attackDamageMaxValue0}% of your normal damage each time.",
+        "descriptionGenerator": "Execute a whirlwind assault, striking the enemy three times for <damage> each time."
+      },
+      {
+        "id": "weapon_uncommon_19",
+        "name": "Dual Thrust",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 80
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 2,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Thrust your weapon twice, each dealing ${attackDamageMaxValue0}% of your normal damage.",
+        "descriptionGenerator": "Thrust your weapon twice, each dealing <damage>."
+      },
+      {
+        "id": "weapon_uncommon_20",
+        "name": "Vicious Strikes",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 50
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Bleed",
+            "procs": 3,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 30
+              }
+            ],
+            "chance": 20
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 4,
+        "attackInterval": 200,
+        "lifesteal": 0,
+        "description": "Deliver a series of vicious strikes, hitting the enemy four times for ${attackDamageMaxValue0}% of your normal damage each time. Has a 20% chance to bleed.",
+        "descriptionGenerator": "Deliver a series of vicious strikes, hitting the enemy four times for <damage> each time."
+      },
+      {
+        "id": "weapon_uncommon_21",
+        "name": "Assault Barrage",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 30
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 5,
+        "attackInterval": 250,
+        "lifesteal": 0,
+        "description": "Strike the enemy five times for ${attackDamageMaxValue0}% of your normal damage each time.",
+        "descriptionGenerator": "Unleash an assault barrage, rapidly striking the enemy five times for <damage> each time."
+      },
+      {
+        "id": "weapon_uncommon_22",
+        "name": "Serrated Slash",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 85
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Bleed",
+            "procs": 3,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 50
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 100,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage, and causes the enemy to bleed.",
+        "descriptionGenerator": "Deliver a serrated slash, causing <damage> and leaving a bleeding wound that deals additional damage over time."
+      },
+      {
+        "id": "weapon_uncommon_23",
+        "name": "Crushing Blow",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 200
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 1,
+            "chance": 10,
+            "flavour": "Stun"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage with a 10% chance to stun the enemy for 1 turn.",
+        "descriptionGenerator": "Deliver a powerful crushing blow, dealing <damage> and potentially staggering the enemy."
+      },
+      {
+        "id": "weapon_uncommon_24",
+        "name": "Frenzied Assault",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 40
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 5,
+        "attackInterval": 250,
+        "lifesteal": 0,
+        "description": "Deliver rapid strikes to the enemy five times for ${attackDamageMaxValue0}% of your normal damage each time.",
+        "descriptionGenerator": "Launch into a frenzied assault, delivering rapid strikes to the enemy five times for <damage> each time."
+      },
+      {
+        "id": "weapon_uncommon_25",
+        "name": "Savage Thrust",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Bleed",
+            "procs": 5,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 75
+              }
+            ],
+            "chance": 20
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 150,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage. Has a 20% chance to make the enemy bleed.",
+        "descriptionGenerator": "Thrust your weapon with savage force, dealing <damage> and potentially causing the enemy to bleed."
+      },
+      {
+        "id": "weapon_uncommon_26",
+        "name": "Rapid Assault",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 60
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 3,
+        "attackInterval": 200,
+        "lifesteal": 0,
+        "description": "Strike the enemy three times for ${attackDamageMaxValue0}% of your normal damage each time.",
+        "descriptionGenerator": "Launch a rapid assault, striking the enemy three times for <damage> each time."
+      }
+    ]
+  }
+}

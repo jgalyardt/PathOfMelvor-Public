@@ -1,0 +1,11 @@
+{
+  "namespace": "pathOfMelvor",
+  "icon": "assets/icon.png",
+  "setup": "setup.mjs",
+  "load": [
+    "assets/style.css",
+    "data/legendaryWeapons.json",
+    "data/rareWeapons.json",
+    "data/uncommonWeapons.json"
+  ]
+}

@@ -1,0 +1,529 @@
+{
+  "$schema": "https://melvoridle.com/assets/schema/gameData.json",
+  "namespace": "pathOfMelvor",
+  "data": {
+    "attacks": [
+      {
+        "id": "weapon_legendary_0",
+        "name": "Toxic Strike",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 150
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Poison",
+            "procs": 100,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 100
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and inflicts Poison that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_legendary_1",
+        "name": "Cut Open",
+        "defaultChance": 20,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 300
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Bleed",
+            "procs": 5,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 225
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an unavoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and inflicts Bleed that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_legendary_2",
+        "name": "Shadowstrike",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Poison",
+            "procs": 30,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 50
+              }
+            ],
+            "chance": 100
+          },
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 1,
+            "chance": 100,
+            "flavour": "Stun"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform a swift strike that deals ${attackDamageMaxValue0}% of your normal damage. This attack inflicts Poison that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s and has a ${onHitEffect1chance}% chance to apply stun for ${onHitEffect1turns} turn.",
+        "descriptionGenerator": "Perform a swift strike that deals <damage>. This attack <hitEffect>."
+      },
+      {
+        "id": "weapon_legendary_3",
+        "name": "Night's Whisper",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 200
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Sleep",
+            "turns": 1,
+            "chance": 100,
+            "hitpointThreshold": 30
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 5,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Unleash dark tendrils of energy that deal ${attackDamageMaxValue0}% of your normal damage. This attack has a ${onHitEffect0chance}% chance to apply sleep for ${onHitEffect0turns} turn if the enemy's hitpoints are below ${onHitEffect0hpThreshold}%.",
+        "descriptionGenerator": "Unleash dark tendrils of energy that deal <damage>. This attack <hitEffect>."
+      },
+      {
+        "id": "weapon_legendary_4",
+        "name": "Crippling Strike",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Slow",
+            "magnitude": 20,
+            "turns": 3
+          },
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Poison",
+            "procs": 20,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 100
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deliver a crippling strike dealing ${attackDamageMaxValue0}% of your normal damage. This attack gives the enemy +${onHitEffect0modValue0}% Attack Interval for ${onHitEffect0turns} of the enemy's turns;inflicts Poison that deals ${onHitEffect1DamageMaxValue0}% of your max hit as damage over ${onHitEffect1duration}s and has a ${onHitEffect2chance}% chance to apply stun for ${onHitEffect2turns} turn.\n",
+        "descriptionGenerator": "Deliver a crippling strike dealing <damage>. This attack <hitEffect>.\n"
+      },
+      {
+        "id": "weapon_legendary_5",
+        "name": "Frostfire Nova",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 200
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 1,
+            "chance": 100,
+            "flavour": "Freeze"
+          },
+          {
+            "effectType": "Burn",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Unleash a powerful nova that deals ${attackDamageMaxValue0}% of your normal damage, ignites the enemy, and freezes them. Consumes 10 Fire Runes and 10 Water Runes.",
+        "descriptionGenerator": "Unleash a powerful nova that deals damage. Has a chance to freeze the enemy and apply a burn effect.",
+        "usesRunesPerProc": true,
+        "extraRuneConsumption": [
+          {
+            "id": "melvorD:Water_Rune",
+            "quantity": 10
+          },
+          {
+            "id": "melvorD:Fire_Rune",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "id": "weapon_legendary_6",
+        "name": "Psychic Quake",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 300
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 3,
+            "chance": 100,
+            "flavour": "Stun"
+          }
+        ],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an unavoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and applies stun for ${onHitEffect0turns} turns. Consumes 10 Mind Runes and 10 Earth Runes.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>. Consumes 10 Mind Runes and 10 Earth Runes.",
+        "extraRuneConsumption": [
+          {
+            "id": "melvorD:Earth_Rune",
+            "quantity": 10
+          },
+          {
+            "id": "melvorD:Mind_Rune",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "id": "weapon_legendary_7",
+        "name": "Toxic Blast",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 150
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Poison",
+            "procs": 20,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Target",
+                "roll": false,
+                "maxRoll": "MaxHP",
+                "maxPercent": 20
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and inflicts Deadly Poison that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_legendary_8",
+        "name": "Dragon's Fury",
+        "defaultChance": 15,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 50
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Affliction"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 5,
+        "attackInterval": 250,
+        "lifesteal": 0,
+        "description": "Perform ${hitCount} avoidable attacks that each deal ${attackDamageMaxValue0}% of your normal damage and gives the enemy -${onHitEffect0modValue0}% Maximum Hitpoints that stacks up to ${onHitEffect0maxStacks} times.",
+        "descriptionGenerator": "Perform <count> <avoidable> attacks that each deal <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_legendary_9",
+        "name": "Vengeful Spirits",
+        "defaultChance": 15,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorTotH:Despair",
+            "chance": 100
+          }
+        ],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Spirits haunt your enemy, dealing ${attackDamageMaxValue0}% of your normal damage. Consumes 10 Death Runes.",
+        "descriptionGenerator": "Spirits haunt your enemy, dealing <damage>. This attack is <avoidable>, and applies Despair. Consumes 10 Death Runes.",
+        "extraRuneConsumption": [
+          {
+            "id": "melvorD:Death_Rune",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "id": "weapon_legendary_10",
+        "name": "Divine Retribution",
+        "defaultChance": 5,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 200
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Bleed",
+            "procs": 20,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 300
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Devastating strike that deals ${attackDamageMaxValue0}% of your normal damage. It begins to rain blood, dealing ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_legendary_11",
+        "name": "Meteor Smash",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 180
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Burn",
+            "turns": 3,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 50
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Call down a meteor that deals ${attackDamageMaxValue0}% of your damage and burns the enemy for 3 turns."
+      },
+      {
+        "id": "weapon_legendary_12",
+        "name": "Hextouch: Blinding III",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:BlindingIII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Blinding III.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Blinding III."
+      },
+      {
+        "id": "weapon_legendary_13",
+        "name": "Hextouch: Soul Split III",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:SoulSplitIII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Soul Split III.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Soul Split III."
+      },
+      {
+        "id": "weapon_legendary_14",
+        "name": "Hextouch: Weakening III",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:WeakeningIII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Weakening III.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Weakening III."
+      },
+      {
+        "id": "weapon_legendary_15",
+        "name": "Hextouch: Anguish III",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:AnguishIII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Anguish III.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Anguish III."
+      }      
+    ]
+  }
+}

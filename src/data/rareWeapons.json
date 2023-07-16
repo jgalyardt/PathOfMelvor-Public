@@ -1,0 +1,371 @@
+{
+  "$schema": "https://melvoridle.com/assets/schema/gameData.json",
+  "namespace": "pathOfMelvor",
+  "data": {
+    "attacks": [
+      {
+        "id": "weapon_rare_0",
+        "name": "Poison Imbuement",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Poison",
+            "procs": 30,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 30
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and inflicts Poison that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_rare_1",
+        "name": "Guttoral Blow",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "DOT",
+            "subtype": "Bleed",
+            "procs": 5,
+            "interval": 500,
+            "damage": [
+              {
+                "character": "Attacker",
+                "roll": false,
+                "maxRoll": "MaxHit",
+                "maxPercent": 150
+              }
+            ],
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and inflicts Bleed that deals ${onHitEffect0DamageMaxValue0}% of your max hit as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_rare_2",
+        "name": "Constrict",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 20
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 2,
+            "chance": 100,
+            "flavour": "Stun"
+          }
+        ],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and applies stun for 2 turns.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_rare_3",
+        "name": "Thundershock",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 120
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Slow",
+            "magnitude": 80,
+            "turns": 2
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Deals ${attackDamageMaxValue0}% of your normal damage. Additionally, it slows the enemy for ${onHitEffect0turns} turns.",
+        "descriptionGenerator": "Lightning attack that deals <damage> and greatly slows the enemy."
+      },
+      {
+        "id": "weapon_rare_4",
+        "name": "Shadow Step",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 200
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 1,
+            "chance": 50,
+            "flavour": "Stun"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Strike with an attack that deals ${attackDamageMaxValue0}% of your normal damage. This attack has a ${onHitEffect0chance}% chance to stun the enemy for ${onHitEffect0turns} turn.",
+        "descriptionGenerator": "Step into the shadows and strike swiftly with an attack that deals <damage>. This attack has a chance to stun the enemy."
+      },
+      {
+        "id": "weapon_rare_5",
+        "name": "Vampirism",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 150
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 100,
+        "description": "Attack that deals ${attackDamageMaxValue0}% of your normal damage with 100% lifesteal.",
+        "descriptionGenerator": "Step into the shadows and strike swiftly with an attack that deals <damage>. This attack has a chance to stun the enemy."
+      },
+      {
+        "id": "weapon_rare_6",
+        "name": "Frost Blade",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 130
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Custom",
+            "type": "Stun",
+            "turns": 1,
+            "chance": 50,
+            "flavour": "Freeze"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Strike with a frozen blade that deals ${attackDamageMaxValue0}% of your normal damage and has an ${onHitEffect0chance}% chance to freeze the enemy for ${onHitEffect0turns} turns."
+      },
+      {
+        "id": "weapon_rare_7",
+        "name": "Rejuvenating Strike",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 70
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 20,
+        "description": "Perform an unavoidable attack dealing ${attackDamageMaxValue0}% of your normal damage twice, with 20% lifesteal.",
+        "descriptionGenerator": "Perform an <avoidable> attack dealing ${attackDamageMaxValue0}% of your normal damage twice, with 20% lifesteal."
+      },
+      {
+        "id": "weapon_rare_8",
+        "name": "Conjure Lightning",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 50
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Slow",
+            "magnitude": 20,
+            "turns": 1
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 5,
+        "attackInterval": 100,
+        "lifesteal": 0,
+        "description": "Perform ${hitCount} avoidable attacks that deal ${attackDamageMaxValue0}% of your normal damage. Each gives the enemy +${onHitEffect0modValue0}% Attack Interval for ${onHitEffect0turns} of the enemy's turns.",
+        "descriptionGenerator": "Perform <count> <avoidable> attacks that deal <damage>. Each <hitEffect>."
+      },
+      {
+        "id": "weapon_rare_9",
+        "name": "Arctic Wind",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 80
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Frostburn"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals and applies frostburn for 2 of the enemy's turns.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and <hitEffect>."
+      },
+      {
+        "id": "weapon_rare_10",
+        "name": "Hextouch: Soul Split II",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:SoulSplitII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Soul Split II.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Soul Split II."
+      },
+      {
+        "id": "weapon_rare_11",
+        "name": "Hextouch: Blinding II",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:BlindingII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Blinding II.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Blinding II."
+      },
+      {
+        "id": "weapon_rare_12",
+        "name": "Hextouch: Anguish II",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:AnguishII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Anguish II.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Anguish II."
+      },
+      {
+        "id": "weapon_rare_13",
+        "name": "Hextouch: Weakening II",
+        "defaultChance": 10,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectType": "Curse",
+            "curse": "melvorF:WeakeningII",
+            "chance": 100
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "description": "Perform an avoidable attack that deals ${attackDamageMaxValue0}% of your normal damage and afflicts the enemy with Weakening II.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage> and afflicts the enemy with Weakening II."
+      }
+    ]
+  }
+}

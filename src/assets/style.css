@@ -1,0 +1,78 @@
+:root {
+  --subtextColor: #CCCCCC;
+  --legendaryColor: #ff7c00;
+  --uncommonColor: #00bfff;
+  --rareColor: #ffd700;
+  --uiBackground: #343C4A;
+  --uiBackgroundDark: #232A35;
+}
+
+.bank-item.green-glow[data-item-id*="legendary"] {
+  border-color: var(--legendaryColor);
+  -webkit-box-shadow: 0 0 10px var(--legendaryColor);
+  -moz-box-shadow: 0 0 10px var(--legendaryColor);
+  box-shadow: 0 0 10px var(--legendaryColor);
+}
+
+.bank-item.green-glow[data-item-id*="uncommon"] {
+  border-color: var(--uncommonColor);
+  -webkit-box-shadow: 0 0 10px var(--uncommonColor);
+  -moz-box-shadow: 0 0 10px var(--uncommonColor);
+  box-shadow: 0 0 10px var(--uncommonColor);
+}
+
+.bank-item.green-glow[data-item-id*="rare"] {
+  border-color: var(--rareColor);
+  -webkit-box-shadow: 0 0 10px var(--rareColor);
+  -moz-box-shadow: 0 0 10px var(--rareColor);
+  box-shadow: 0 0 10px var(--rareColor);
+}
+
+img[src*="rarity=legendary"] {
+  border-radius: 5px;
+  position: relative;
+  background: linear-gradient(45deg, rgba(10,2,20,0) 0%, rgba(10,2,20,0) 45%, var(--legendaryColor) 92%);
+}
+
+img[src*="rarity=uncommon"] {
+  border-radius: 5px;
+  position: relative;
+  background: linear-gradient(45deg, rgba(10,2,20,0) 0%, rgba(10,2,20,0) 45%, var(--uncommonColor) 92%);
+}
+
+img[src*="rarity=rare"] {
+  border-radius: 5px;
+  position: relative;
+  background: linear-gradient(45deg, rgba(10,2,20,0) 0%, rgba(10,2,20,0) 45%, var(--rareColor) 92%);
+}
+
+img[src*="rarity=uncommon"] ~ #item-upgrade-description,
+img[src*="rarity=rare"] ~ #item-upgrade-description,
+img[src*="rarity=legendary"] ~ #item-upgrade-description {
+  color: var(--uiBackground) !important;
+  font-size: 0px !important;
+}
+
+img[src*="rarity=uncommon"] ~ #item-upgrade-description::before,
+img[src*="rarity=rare"] ~ #item-upgrade-description::before,
+img[src*="rarity=legendary"] ~ #item-upgrade-description::before {
+  content: 'Warning: Stats will be rolled into new random stats!';
+  color: red;
+  position: absolute;
+  background-color: var(--uiBackgroundDark);
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80%;
+  font-size: 20px !important;
+  height: auto;
+  z-index: 2;
+}
+
+.numVariants {
+  font-style: italic;
+  font-size: 14px;
+  color: var(--subtextColor);
+  line-height: 4px;
+}
+
