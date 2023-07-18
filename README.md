@@ -9,6 +9,7 @@ Tracked issues / ideas:
   - Update modifier tables to be relevant to the item, e.g. ranged gloves will roll ranged modifiers
   - Explore the idea of having drops appear as unidentified versions rather than pre-rolled versions to alleviate storage issues and reduce clutter in the drop information.
   - Explore options for obtaining a steady supply of vanilla weapons or converting special weapons into vanilla weapon crafting ingredients.
+  - Resolve various issues relating to the Impending Darkness event.
   - Resolve the issue with T120 armor and weapons requiring completion of the Impending Darkness event to equip, even after completing it multiple times.
   - Resolve the issue where upgrading the T120 rapier with 100 shards results in a stackable uncommon rapier with the same special attacks.
   - Resolve the issue where locked items from the mod become unlocked upon reloading the game.
