@@ -152,7 +152,7 @@ export class ItemPackageBuilder {
           newEquipRequirements.push({
             type: req.type,
             dungeonID: `${req.dungeon.namespace}:${req.dungeon.localID}`,
-            level: req.level
+            count: req.count
           });
         }
       });

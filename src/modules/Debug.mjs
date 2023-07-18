@@ -3,7 +3,7 @@ export class Debug {
     this.config = config;
     this.storage = storage;
 
-    window.pathOfMevlor = this;
+    window.p = this;
   }
 
   runAllTests() {
@@ -167,6 +167,10 @@ export class Debug {
       let quantity = bankItem.quantity;
       game.bank.removeItemQuantity(item, quantity);
     });
+  }
+
+  addItem(id, quantity=1) {
+    game.bank.addItemByID(id, quantity, true, true, true);
   }
 
   generateDebugItems = () => {
