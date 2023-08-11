@@ -163,26 +163,26 @@ export class Patches {
 
   //Patch in-game skills that can produce modded items
   patchCraftingRewards() {
-    this.patch(Crafting, 'actionRewards').replace((o, amount, masteryAction) => {
-      return this.randomUtils.rerollActiveActionProduct(o, amount, masteryAction);
+    this.patch(Crafting, 'actionRewards').replace((o) => {
+      return this.randomUtils.rerollSkillProduct(o, game.crafting);
     });
   }
 
   patchFletchingRewards() {
-    this.patch(Fletching, 'actionRewards').replace((o, amount, masteryAction) => {
-      return this.randomUtils.rerollActiveActionProduct(o, amount, masteryAction);
+    this.patch(Fletching, 'actionRewards').replace((o) => {
+      return this.randomUtils.rerollSkillProduct(o, game.fletching);
     });
   }
 
   patchSmithingRewards() {
-    this.patch(Smithing, 'actionRewards').replace((o, amount, masteryAction) => {
-      return this.randomUtils.rerollActiveActionProduct(o, amount, masteryAction);
+    this.patch(Smithing, 'actionRewards').replace((o) => {
+      return this.randomUtils.rerollSkillProduct(o, game.smithing);
     });
   }
 
   patchRunecraftingRewards() {
-    this.patch(Runecrafting, 'actionRewards').replace((o, amount, masteryAction) => {
-      return this.randomUtils.rerollActiveActionProduct(o, amount, masteryAction);
+    this.patch(Runecrafting, 'actionRewards').replace((o) => {
+      return this.randomUtils.rerollSkillProduct(o, game.runecrafting);
     });
   }
 }

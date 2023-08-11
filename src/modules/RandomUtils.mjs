@@ -65,36 +65,35 @@ export class RandomUtils {
   }
 
   /**
-   * Re-rolls the product in the player's active action if it matches a modded item based on configured rarities and their weights.
+   * Re-rolls the product for the skill if it matches a modded item based on configured rarities and their weights.
    *
    * @param {function} skillFunction - Function to be called after rerolling the product.
-   * @param {number} amount - Amount to be passed to the skillFunction.
-   * @param {object} masteryAction - Mastery action to be passed to the skillFunction.
+   * @param {object} skill - Skill that is producing the product.
    */
-  rerollActiveActionProduct(skillFunction, amount, masteryAction) {
-    let product = game.activeAction.selectedRecipe.product;
+  rerollSkillProduct(skillFunction, skill) {
+    let product = skill.selectedRecipe.product;
     //Check if the last action rolled the selectedRecipe into a modded variant. If so, reset it to the vanilla item
     if (product.vanillaID) {
-      game.activeAction.selectedRecipe.product = game.items.equipment.registeredObjects.get(product.vanillaID);
+      skill.selectedRecipe.product = game.items.equipment.registeredObjects.get(product.vanillaID);
     }
 
     //Check if the vanilla product has modded variants
     if (this.checkIfItemHasVariants(product)) {
         // Roll to determine if product should be modified, depending on craftingRarityPercentage
         if (Math.floor(Math.random() * 100) < this.craftingRarityPercentage 
-        && game.activeAction 
-        && game.activeAction.selectedRecipe 
-        && game.activeAction.selectedRecipe.product) {
+        && skill 
+        && skill.selectedRecipe 
+        && skill.selectedRecipe.product) {
 
-        product = game.activeAction.selectedRecipe.product;
+        product = skill.selectedRecipe.product;
         const newProduct = game.items.equipment.registeredObjects.get(this.getRandomVariant(product));
         newProduct.vanillaID = `${product.namespace}:${product.localID}`;
 
         // Assign the new product
-        game.activeAction.selectedRecipe.product = newProduct;
+        skill.selectedRecipe.product = newProduct;
       }
     }
 
-    return skillFunction(amount, masteryAction);
+    return skillFunction();
   }
 }
