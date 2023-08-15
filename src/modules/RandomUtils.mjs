@@ -99,29 +99,29 @@ export class RandomUtils {
    * @param {object} skill - Skill that is producing the product.
    */
   rerollSkillProduct(skillFunction, skill) {
-    let product = skill.selectedRecipe.product;
-    //Check if the last action rolled the selectedRecipe into a modded variant. If so, reset it to the vanilla item
-    if (product.vanillaID) {
-      skill.selectedRecipe.product = game.items.equipment.registeredObjects.get(product.vanillaID);
-    }
-
-    //Check if the vanilla product has modded variants
-    if (this.checkIfItemHasVariants(product)) {
+    if (skill && skill.selectedRecipe && skill.selectedRecipe.product) {
+      let product = skill.selectedRecipe.product;
+      //Check if the last action rolled the selectedRecipe into a modded variant. If so, reset it to the vanilla item
+      if (product.vanillaID) {
+        skill.selectedRecipe.product = game.items.equipment.registeredObjects.get(product.vanillaID);
+      }
+  
+      //Check if the vanilla product has modded variants
+      if (this.checkIfItemHasVariants(product)) {
         // Roll to determine if product should be modified, depending on craftingRarityPercentage
-        if (Math.floor(Math.random() * 100) < this.craftingRarityPercentage 
-        && skill 
-        && skill.selectedRecipe 
-        && skill.selectedRecipe.product) {
+        if (Math.floor(Math.random() * 100) < this.craftingRarityPercentage) {
+  
+          product = skill.selectedRecipe.product;
+          const newProduct = game.items.equipment.registeredObjects.get(this.getRandomVariant(product));
 
-        product = skill.selectedRecipe.product;
-        const newProduct = game.items.equipment.registeredObjects.get(this.getRandomVariant(product));
-        newProduct.vanillaID = `${product.namespace}:${product.localID}`;
-
-        // Assign the new product
-        skill.selectedRecipe.product = newProduct;
+          // Set the vanillaID to revert back to afterwards
+          newProduct.vanillaID = `${product.namespace}:${product.localID}`;
+  
+          // Assign the new product
+          skill.selectedRecipe.product = newProduct;
+        }
       }
     }
-
     return skillFunction();
   }
 }
