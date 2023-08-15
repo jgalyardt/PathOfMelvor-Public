@@ -27,6 +27,34 @@ export class RandomUtils {
     return game.items.equipment.registeredObjects.has(`${this.manifest.namespace}:${itemRef.localID}_uncommon_0`);
   }
 
+    /**
+   * Returns a reference to the vanilla version of an item
+   *
+   * @param {object} itemRef - Reference to the item
+   * @returns {object} A reference to the vanilla version of the item
+   */
+  getVanillaItem(itemRef) {
+    if (itemRef.namespace === this.manifest.namespace) {
+      const vanillaID = itemRef.localID.replace(/_(uncommon|rare|legendary)_(\d)+/, '');
+
+      const itemMelvorD = game.items.getObjectByID(`melvorD:${vanillaID}`);
+      if (itemMelvorD) {
+        return itemMelvorD;
+      }
+
+      const itemMelvorF = game.items.getObjectByID(`melvorF:${vanillaID}`);
+      if (itemMelvorF) {
+        return itemMelvorF;
+      }
+
+      const itemMelvorTotH = game.items.getObjectByID(`melvorTotH:${vanillaID}`);
+      if (itemMelvorTotH) {
+        return itemMelvorTotH;
+      }
+    }
+    return itemRef;
+  }
+
   /**
    * Returns the vanilla namespace + local ID, or the namespace + local ID of an item variant if the random roll succeeds
    *

@@ -177,7 +177,9 @@ export class Debug {
     game.bank.addItem(game.items.weapons.registeredObjects.get('melvorD:Bronze_Dagger'), 1, true, true, true, false, 'pathOfMelvor');
     game.bank.addItem(game.items.equipment.registeredObjects.get('pathOfMelvor:Bronze_Helmet_rare_0'), 1, true, true, true, false, 'pathOfMelvor');
     game.bank.addItem(game.items.weapons.registeredObjects.get('pathOfMelvor:Bronze_Dagger_legendary_0'), 1, true, true, true, false, 'pathOfMelvor');
-    game.bank.addItemByID("melvorF:Scroll_of_Ragnar", 100, true, true, false);
+    game.bank.addItemByID("melvorF:Scroll_of_Ragnar", 1000, true, true, false);
+    game.bank.addItemByID("melvorF:Scroll_of_Glacia", 1000, true, true, false);
+    game.bank.addItemByID("melvorF:Scroll_of_Aeris", 1000, true, true, false);
     game.bank.addItemByID("melvorF:Shockwave_Fragment", 100, true, true, false);
     game.bank.addItemByID("melvorD:Bronze_Bar", 100, true, true, false);
     game.bank.addItemByID("melvorD:Silver_Bar", 100, true, true, false);

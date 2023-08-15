@@ -120,8 +120,12 @@ export class Patches {
   //Patch item upgrade recipes to included modded items
   patchUpgradeRecipes() {
     this.patch(Bank, 'upgradeItemOnClick').before((upgrade, upgradeQuantity) => {
+
       //Check if this item has modded variants
-      if (upgrade && upgrade.upgradedItem && this.randomUtils.checkIfItemHasVariants(upgrade.upgradedItem)) {
+      if (upgrade && 
+        upgrade.upgradedItem &&
+        upgrade.isDowngrade !== true &&
+        this.randomUtils.checkIfItemHasVariants(upgrade.upgradedItem)) {
 
         // If upgradeQuantity is greater than 1, iteratively call upgradeItemOnClick for each quantity except the first
         if (upgradeQuantity > 1) {
@@ -154,10 +158,20 @@ export class Patches {
 
           let selectedVariant = this.randomUtils.getRandomVariant(upgrade.upgradedItem);
           upgrade.upgradedItem = game.items.equipment.registeredObjects.get(selectedVariant);
+          game.lastUpgrade = upgrade;
         }
       }
 
       return [upgrade, upgradeQuantity];
+    });
+
+    this.patch(Bank, 'upgradeItemOnClick').after(() => {
+      if (game.lastUpgrade && game.lastUpgrade.upgradedItem) {
+        const vanillaItem = this.randomUtils.getVanillaItem(game.lastUpgrade.upgradedItem);
+        if (vanillaItem) {
+          game.lastUpgrade.upgradedItem = vanillaItem;
+        }
+      }
     });
   }
 

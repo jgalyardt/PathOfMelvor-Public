@@ -33,6 +33,7 @@ export class ItemPackageBuilder {
             && recipe.upgradedItem.localID) {
 
             let index = 0;
+            let vanillaItemKey = `${recipe.rootItems[0].namespace}:${recipe.rootItems[0].localID}`;
             let baseItemKey = `${this.manifest.namespace}:${recipe.rootItems[0].localID}_${rarity.name}_${index}`;
             let upgradedItemKey = `${this.manifest.namespace}:${recipe.upgradedItem.localID}_${rarity.name}_${index}`;
   
@@ -71,6 +72,21 @@ export class ItemPackageBuilder {
                 ],
                 isDowngrade: recipe.isDowngrade
               };
+
+              // Create a recipe to downgrade the item for free to the vanilla version
+              let itemDowngrade = {
+                upgradedItemID: vanillaItemKey,
+                gpCost: 0,
+                scCost: 0,
+                itemCosts: [{
+                  id: `${moddedBaseItem.namespace}:${moddedBaseItem.localID}`,
+                  quantity: 1
+                }],
+                rootItemIDs: [
+                  `${moddedBaseItem.namespace}:${moddedBaseItem.localID}`
+                ],
+                isDowngrade: true
+              };
   
               // Check if itemUpgradeData already contains the newItemUpgrade
               let isDuplicate = itemUpgradeData.some(item => 
@@ -80,6 +96,7 @@ export class ItemPackageBuilder {
               // Add it to itemUpgradeData only if it is not a duplicate
               if (!isDuplicate) {
                 itemUpgradeData.push(newItemUpgrade);
+                itemUpgradeData.push(itemDowngrade);
               }
 
               index += 1;
@@ -89,8 +106,42 @@ export class ItemPackageBuilder {
           }
         });
       });
-
+      
       game.bank.registerItemUpgrades(itemUpgradeData);
+    }
+  }
+
+  /**
+   * Calculates the category with the highest total attack bonus (melee, ranged, magic, or any) 
+   * based on the provided stats. Ignores defence bonuses while calculating attack values.
+   *
+   * @param {Array} stats - An array of objects representing the stats, each containing a "key" (stat type) and "value" (stat value).
+   * @return {string} - The category with the highest total attack bonus ("melee", "ranged", "magic", or "any" if all attack bonuses are equal).
+   */
+  getHighestAttackCategory(stats) {
+    let meleeAttack = 0;
+    let rangedAttack = 0;
+    let magicAttack = 0;
+  
+    for (const stat of stats) {
+      if (stat.key === "rangedAttackBonus" || stat.key === "rangedStrengthBonus") {
+        rangedAttack += stat.value;
+      } else if (stat.key === "magicAttackBonus") {
+        magicAttack += stat.value;
+      } else if (stat.key === "meleeAttackBonus" || stat.key === "meleeStrengthBonus") {
+        meleeAttack += stat.value;
+      }
+    }
+  
+    // Check if all attack bonuses are equal
+    if (meleeAttack === rangedAttack && rangedAttack === magicAttack) {
+      return "any";
+    } else if (meleeAttack > rangedAttack && meleeAttack > magicAttack) {
+      return "melee";
+    } else if (rangedAttack > meleeAttack && rangedAttack > magicAttack) {
+      return "ranged";
+    } else {
+      return "magic";
     }
   }
 
@@ -125,11 +176,12 @@ export class ItemPackageBuilder {
     let modifiers = this.copyExistingModifiers(equipment.modifiers);
     let conditionalModifiers = this.copyConditionalModifiers(equipment.conditionalModifiers);
     let fightEffects = this.copyFightEffects(equipment.fightEffects);
+    let equipmentCategory = this.getHighestAttackCategory(equipment.equipmentStats);
 
     // Generate and add item variants for each rarity
     this.generateItemVariantsForRarities(
       equipment,
-      (item, rarity, index) => this.addEquipmentVariant(item, rarity, index, newEquipRequirements, modifiers, providedRunes, fightEffects, conditionalModifiers, itemPackage)
+      (item, rarity, index) => this.addEquipmentVariant(item, rarity, index, newEquipRequirements, equipmentCategory, modifiers, providedRunes, fightEffects, conditionalModifiers, itemPackage)
     );
   }
 
@@ -325,7 +377,7 @@ export class ItemPackageBuilder {
       type: weapon.type,
       ammoTypeRequired: AmmoTypeID[weapon.ammoTypeRequired],
       media: `https://cdn.melvor.net/core/v018/${weapon.media}?rarity=${rarity.name}`,
-      ignoreCompletion: weapon.ignoreCompletion,
+      ignoreCompletion: true,
       obtainFromItemLog: weapon.obtainFromItemLog,
       golbinRaidExclusive: weapon.golbinRaidExclusive,
       sellsFor: weapon.sellsFor,
@@ -355,19 +407,20 @@ export class ItemPackageBuilder {
    * @param {object} rarity - The rarity of the variant.
    * @param {number} index - The index of the variant.
    * @param {Array} newEquipRequirements - The copied equip requirements.
+   * @param {string} equipmentCategory - The equipment category (magic, melee, ranged, any).
    * @param {object} modifiers - The copied modifiers.
    * @param {Array} providedRunes - The copied provided runes.
    * @param {Array} fightEffects - The copied fight effects.
    * @param {Array} conditionalModifiers - The copied conditional modifiers.
    * @param {object} itemPackage - The item package to add the variant to.
    */
-  addEquipmentVariant(equipment, rarity, index, newEquipRequirements, modifiers, providedRunes, fightEffects, conditionalModifiers, itemPackage) {
+  addEquipmentVariant(equipment, rarity, index, newEquipRequirements, equipmentCategory, modifiers, providedRunes, fightEffects, conditionalModifiers, itemPackage) {
     let variant = this.itemEditor.generateEquipmentVariant(equipment, rarity, this.config.fluxPercentage);
 
     //Merge the existing modifiers with the new generated ones
     let newModifiers = {
       ...modifiers,
-      ...this.itemEditor.generateEquipmentModifiers(rarity)
+      ...this.itemEditor.generateEquipmentModifiers(rarity, equipmentCategory)
     }
 
     itemPackage.items.add({
@@ -378,7 +431,7 @@ export class ItemPackageBuilder {
       category: equipment.category,
       type: equipment.itemType,
       media: `https://cdn.melvor.net/core/v018/${equipment.media}?rarity=${rarity.name}`,
-      ignoreCompletion: equipment.ignoreCompletion,
+      ignoreCompletion: true,
       obtainFromItemLog: equipment.obtainFromItemLog,
       golbinRaidExclusive: equipment.golbinRaidExclusive,
       sellsFor: equipment.sellsFor,

@@ -216,9 +216,16 @@ export class Storage {
       itemArray.forEach((item) => {
         const itemId = item.id;
         const itemType = item.itemType;
+        let itemQuantity = item.quantity;
+
+        if (isNaN(itemQuantity) || typeof itemQuantity !== 'number') {
+          itemQuantity = 1;
+        }
+        else if (itemQuantity <= 0) {
+          itemQuantity = 1;
+        }
 
         if (item.itemLocation === '0') {
-          const itemQuantity = item.quantity;
           const setIndex = item.setIndex;
 
           // Use the equipItem method for items part of an equipment set
@@ -231,7 +238,6 @@ export class Storage {
             );
           }
         } else if (item.itemLocation === '1') {
-          const itemQuantity = item.quantity;
           const tabIndex = item.tabIndex;
 
           // Use the addItemByID method for bank items

@@ -13,16 +13,18 @@ export class ItemEditor {
     this.manifest = manifest;
     this.config = config;
     this.rand = rand;
+    this.equpmentTypes = ['melee', 'ranged', 'magic'];
 
     // Store the modifiers specified in the equipment JSON to reference later
     this.modifiers = (function () {
       let dict = {};
-      config.rarities.forEach(rarity => {
-        dict[rarity.name] = [];
-        let modPool = config.modifiers[rarity.name];
+      let equipmentTypes = ['melee', 'ranged', 'magic'];
+      equipmentTypes.forEach(type => {
+        dict[type] = [];
+        let modPool = config.modifiers[type];
         for (const modifierName in modPool) {
           const modifierValue = modPool[modifierName];
-          dict[rarity.name].push({
+          dict[type].push({
             key: modifierName,
             value: modifierValue,
           });
@@ -209,18 +211,44 @@ export class ItemEditor {
   /**
    * Generates equipment modifiers based on the specified rarity.
    * @param {object} rarity - The rarity configuration.
+   * @param {string} equipmentType - The type (magic, melee, ranged) of the equipment
    * @returns {object} - The generated equipment modifiers.
    */
-  generateEquipmentModifiers(rarity) {
+  generateEquipmentModifiers(rarity, equipmentType='any') {
     let equipmentModifiers = {};
 
     // Randomly select modifiers from the available modifiers for the given rarity
-    rarity.modifierSlots.forEach(slotRarity => {
-      let availableModifiers = this.modifiers[slotRarity];
+    for (let i = 0; i < rarity.modifierSlots; i++) {
+      let availableModifiers = [];
+      if (equipmentType === 'any') {
+        let chosenType = this.equpmentTypes[this.rand.int(0, 3)]
+        availableModifiers = this.modifiers[chosenType];
+      }
+      else {
+        availableModifiers = this.modifiers[equipmentType];
+      }
+
       let randomIndex = this.rand.int(0, availableModifiers.length);
       let selectedModifier = availableModifiers[randomIndex];
+
+      //Reroll until a new mod is selected
+      while (equipmentModifiers.hasOwnProperty(selectedModifier.key)) {
+        randomIndex = this.rand.int(0, availableModifiers.length);
+        selectedModifier = availableModifiers[randomIndex];
+      }
+
       equipmentModifiers[selectedModifier.key] = selectedModifier.value;
-    });
+    }
+
+    // If the rarity is legendary, double the value of a random modifier
+    if (rarity.name === 'legendary') {
+      let modifierKeys = Object.keys(equipmentModifiers);
+      let randomKey = modifierKeys[this.rand.int(0, modifierKeys.length)];
+      while (randomKey === 'increasedMeleeStunThreshold') {
+        randomKey = modifierKeys[this.rand.int(0, modifierKeys.length)];
+      }
+      equipmentModifiers[randomKey] *= 2;
+    }
 
     return equipmentModifiers;
   }

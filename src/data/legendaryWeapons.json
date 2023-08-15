@@ -42,7 +42,7 @@
       {
         "id": "weapon_legendary_1",
         "name": "Cut Open",
-        "defaultChance": 20,
+        "defaultChance": 8,
         "damage": [
           {
             "damageType": "Normal",
